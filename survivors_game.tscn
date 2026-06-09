@@ -1,0 +1,153 @@
+[gd_scene load_steps=10 format=3 uid="uid://swcb8q32cvqi"]
+
+[ext_resource type="Script" uid="uid://c1bfau31nfqio" path="res://survivors_game.gd" id="1_qqaft"]
+[ext_resource type="PackedScene" uid="uid://c1sx7bic4uhdj" path="res://player.tscn" id="1_y3pti"]
+[ext_resource type="Script" uid="uid://7oq84tadom7x" path="res://kill_couner.gd" id="2_edxvn"]
+[ext_resource type="PackedScene" uid="uid://c0gpy0pye4jr6" path="res://tree.tscn" id="2_l26od"]
+[ext_resource type="PackedScene" uid="uid://y38gte5o0xf8" path="res://mob.tscn" id="3_l26od"]
+[ext_resource type="PackedScene" uid="uid://6c15u8u35mb7" path="res://fenceup.tscn" id="5_7jj1j"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7jj1j"]
+bg_color = Color(0.09411765, 0.09411765, 0.09411765, 0.24705882)
+
+[sub_resource type="FontFile" id="FontFile_7jj1j"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+
+[sub_resource type="Curve2D" id="Curve2D_7jj1j"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -902, -706, 0, 0, 0, 0, 2443, -743, 0, 0, 0, 0, 2451, 1774, 0, 0, 0, 0, -924, 1774, 0, 0, 0, 0, -879, -698)
+}
+point_count = 5
+
+[node name="Game" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_qqaft")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -30
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_left = -568.0
+offset_top = -493.0
+offset_right = 2200.0
+offset_bottom = 1609.0
+color = Color(0.45643753, 0.32419103, 0.20191047, 1)
+
+[node name="KillCouner" type="PanelContainer" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -72.0
+offset_right = 72.0
+offset_bottom = 48.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7jj1j")
+script = ExtResource("2_edxvn")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/KillCouner"]
+layout_mode = 2
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer/KillCouner/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontFile_7jj1j")
+text = "💀 Slimes Defeated:"
+
+[node name="Player" parent="." instance=ExtResource("1_y3pti")]
+position = Vector2(738, 625)
+
+[node name="Path2D" type="Path2D" parent="Player"]
+position = Vector2(-738, -625)
+curve = SubResource("Curve2D_7jj1j")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Player/Path2D"]
+unique_name_in_owner = true
+position = Vector2(-902, -706)
+rotation = -0.011060834
+
+[node name="mob" parent="." instance=ExtResource("3_l26od")]
+position = Vector2(1212, 1019)
+collision_layer = 1
+collision_mask = 2
+
+[node name="Tree" parent="." instance=ExtResource("2_l26od")]
+position = Vector2(-502, -406)
+
+[node name="Tree11" parent="." instance=ExtResource("2_l26od")]
+position = Vector2(417, -111)
+
+[node name="Tree2" parent="." instance=ExtResource("2_l26od")]
+position = Vector2(-171, 1392)
+
+[node name="Tree3" parent="." instance=ExtResource("2_l26od")]
+position = Vector2(1237, 26)
+
+[node name="Tree4" parent="." instance=ExtResource("2_l26od")]
+position = Vector2(2004, 796)
+
+[node name="Tree5" parent="." instance=ExtResource("2_l26od")]
+position = Vector2(440, 381)
+
+[node name="Tree6" parent="." instance=ExtResource("2_l26od")]
+position = Vector2(-149, 608)
+
+[node name="Tree7" parent="." instance=ExtResource("2_l26od")]
+position = Vector2(1661, -203)
+
+[node name="Tree8" parent="." instance=ExtResource("2_l26od")]
+position = Vector2(-285, 56)
+
+[node name="Tree9" parent="." instance=ExtResource("2_l26od")]
+position = Vector2(1628, 1361)
+
+[node name="Tree10" parent="." instance=ExtResource("2_l26od")]
+position = Vector2(552, 1274)
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="GameOver" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="GameOver"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -576.0
+offset_top = -507.0
+offset_right = 288.0
+offset_bottom = 518.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.003921569, 0.003921569, 0.003921569, 0.003921569)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOver"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="GameOverText" type="Label" parent="GameOver/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.16078432, 0.039215688, 1)
+theme_override_font_sizes/font_size = 276
+text = "GAME OVER"
+
+[node name="RestartButton" type="Button" parent="GameOver/VBoxContainer"]
+process_mode = 2
+layout_mode = 2
+
+[node name="FinalScore" type="Label" parent="GameOver/VBoxContainer"]
+layout_mode = 2
+
+[node name="fence" parent="." instance=ExtResource("5_7jj1j")]
+
+[node name="fence2" parent="." instance=ExtResource("5_7jj1j")]
+position = Vector2(-559, 1573)
+
+[connection signal="health_depleted" from="Player" to="." method="_on_player_health_depleted"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="GameOver/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]

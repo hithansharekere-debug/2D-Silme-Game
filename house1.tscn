@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsl3a6db8by1f"]
+
+[ext_resource type="Texture2D" uid="uid://d4j4dtjyqmr7d" path="res://kenney_micro-roguelike/Tiles/Colored/tile_0117.png" id="1_6w6tr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pu0qd"]
+size = Vector2(34, 30)
+
+[node name="house" type="CollisionShape2D"]
+
+[node name="Tile0117" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(130.5, 89)
+scale = Vector2(5.8750005, 5.75)
+texture = ExtResource("1_6w6tr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(131, 97)
+shape = SubResource("RectangleShape2D_pu0qd")
