@@ -50,7 +50,7 @@ survivors_game.gd    # Main game scene controller
 ## Installation
 
 ```bash
-git clone https://github.com/<your-username>/survivors-arena.git
+git clone https://github.com/<hithansh-debug>/survivors-arena.git
 ```
 
 Open the project in Godot 4.5 and run `survivors_game.tscn`.
