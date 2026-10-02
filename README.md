@@ -19,7 +19,7 @@ A 2D survival shooter built from scratch in Godot 4 without using any game templ
 
 The player must survive against continuously spawning slimes. Enemies pursue the player and deal damage on contact. The weapon automatically attacks nearby enemies, rewarding players who can position themselves strategically and survive longer.
 
-## Tech Stack
+## Tech Stack Used To Build
 
 * Engine: Godot 4.5
 * Language: GDScript
