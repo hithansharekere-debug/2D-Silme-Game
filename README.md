@@ -1,4 +1,4 @@
-# Slime-Game(NO AI)
+# Slime-Game(NO AI used)
 
 A 2D survival shooter built from scratch in Godot 4 without using any game templates. Fight endless waves of slimes using automatic radius-based attacks, survive as long as possible, and achieve the highest kill count.
 
